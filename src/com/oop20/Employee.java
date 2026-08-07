@@ -1,0 +1,25 @@
+package com.oop20;
+
+public abstract class Employee implements Payable {
+    private String name;
+    private int id;
+
+    public Employee (String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void printInfo() {
+        System.out.println("[" + id + "]" + " " + name);
+        System.out.println("급여: " + calculatePay() + "원");
+    }
+
+}

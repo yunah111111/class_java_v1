@@ -66,6 +66,7 @@ public class MoveLabelFrame extends JFrame {
                     count++;
                 }
 
+
                 setTitle("방향키로 별 움직이기 연습 | 이동 횟수: " + count);
             }
 

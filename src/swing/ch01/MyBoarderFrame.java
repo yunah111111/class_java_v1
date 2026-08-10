@@ -1,19 +1,16 @@
 package swing.ch01;
 
-import com.oop14.B;
-import com.sun.jdi.connect.Connector;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class MyBoardeFrame extends JFrame {
+public class MyBoarderFrame extends JFrame {
 
     JButton[] buttons = new JButton[5];
     private BorderLayout borderLayout;
     private String[] directions = {BorderLayout.NORTH, BorderLayout.WEST,
             BorderLayout.EAST, BorderLayout.SOUTH, BorderLayout.CENTER};
 
-    public MyBoardeFrame() {
+    public MyBoarderFrame() {
 
         setTitle("boarderLayout 연습");
         setSize(600, 400);

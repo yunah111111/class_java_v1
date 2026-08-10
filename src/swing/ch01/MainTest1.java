@@ -4,7 +4,7 @@ public class MainTest1 {
 
     public static void main(String[] args) {
 
-        new MyBoardeFrame();
+        new MyBoarderFrame();
 
     } // end of main
 

@@ -33,7 +33,7 @@ public class SimpleHttpClient {
             // GET 요청은 HTTP 요청메시지 HTTP 바디 영역 없는 요청이다.
 
             // 추가 설정도 셋팅 가능하다.
-            connection.setRequestProperty("Accpet", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
 
             // 4단계: 이 시점에서 실제로 TCP 연결 + 요청 전송이 일어남
             int responseCode = connection.getResponseCode();

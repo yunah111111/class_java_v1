@@ -7,10 +7,11 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
-{
- "name" : "티모",
- "email" : "abc@nate.com
-}import java.util.List;
+import java.util.List;
+//{
+// "name" : "티모",
+// "email" : "abc@nate.com
+//}import java.util.List;
 
 // /api/users -
 // GET: 목록을 조회한다.

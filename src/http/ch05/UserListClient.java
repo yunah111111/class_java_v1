@@ -13,7 +13,7 @@ public class UserListClient {
 
     public static void main(String[] args) {
 
-        String urlString = "https://jsonplaceholder.typicode.com/users/1";
+        String urlString = "https://jsonplaceholder.typicode.com/users";
         HttpURLConnection conn = null;
 
         try {
@@ -37,23 +37,27 @@ public class UserListClient {
                 while ((line = reader.readLine()) != null) {
                     sb.append(line);
                 }
+                // 여기까지 코드 같음
 
                 Gson gson = new Gson();
                 TypeToken<List<User>> typeToken = new TypeToken<List<User>>() {};
+                // 여기서 이번에 JSON이 배열임 그래서 User user가 아니라 List<User> UserList
+                // TypeToken => 이번에는 User 한명이 아니고 list라고 타입 정보를 알려줌
                 List<User> userList = gson.fromJson(sb.toString(), typeToken.getType());
 
 
+                // 그래서 이제 리스트가 생김
                 System.out.println("전체 개수: " + userList.size());
                 System.out.println("-------------------------------------");
 
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < userList.size(); i++) {
                     System.out.println(userList.get(i));
                 }
             }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } finally {
+        } finally { // 통신이 끝남 - 연결 끊기
             if (conn != null) {
                 conn.disconnect();
             }

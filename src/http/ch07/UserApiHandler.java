@@ -20,8 +20,9 @@ public class UserApiHandler implements HttpHandler {
 
     // 실제로는 DB에 저장한다. 지금은 메모리 리스트로 대신한다. 즉, 서버를 껐다 키면 내용이 다 사라진다.
     private static final List<User> userList = new ArrayList<>();
-    // 다음에 부여할 id
+    // 사용자들을 저장해놓은 리스트
     private static int nextId = 1;
+    // 사용자를 추가할 때 ID를 자동으로 붙이기 위한 변수
 
     // static 초기화 블록
     // 클래스가 메모리에 처음 올라갈 때 딱 한 번만 실행되는 코드 묶음
@@ -32,10 +33,14 @@ public class UserApiHandler implements HttpHandler {
     }
 
     private static synchronized int addUser(User user) {
+        // 사용자를 리스트에 추가하는 메서드
+        // synchronized 여러 스레드가 동시에 사용자를 추가하려고 할 때 충돌하지 않도록 함
+        // 한번에 한 스레드만 메서드 실행
         user.setId(nextId); // 최소 1 <- 쏙 들어감
+        // ex) nextId = 1이면 user.setId(1)이 됨
         nextId++;
-        userList.add(user);
-        return user.getId();
+        userList.add(user); // 실제로 리스트에 사용자를 넣음
+        return user.getId(); // ID 반환
 
     }
 
@@ -46,10 +51,12 @@ public class UserApiHandler implements HttpHandler {
             // 즉, 경로가 같아도 Method가 다르면 하는 일이 다르다.
             // 그래서 이 핸들러 안에서 메서드로 한 번 더 갈라준다.
             String method = exchange.getRequestMethod();
+            // 클라이언트가 어떤 HTTP 메서드를 사용했는지 가져옴 (GET이냐 POST냐)
 
             if (method.equals("GET")) {
                 Thread.sleep(2000);
-               handleGet(exchange);
+                // 현재 스레드를 2초 동안 멈춤
+               handleGet(exchange); // GET 요청을 실제로 처리하는 메서드를 호출
             } else if (method.equals("POST")) {
                 handlePost(exchange);
             } else {

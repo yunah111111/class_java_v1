@@ -19,7 +19,7 @@ public class FileInputTest1 {
             System.out.println("1: " + readData);
             System.out.println("1: " + (char) readData);
 
-            // 파일의 두 번재 데이터를 한 바이트로 읽기
+            // 파일의 두 번째 데이터를 한 바이트로 읽기
             readData = in.read();
             System.out.println("2: " + readData);
             System.out.println("2: " + (char) readData);
